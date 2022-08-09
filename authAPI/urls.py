@@ -9,5 +9,3 @@ urlpatterns = [
     path('refreshToken/', RefreshTokenView.as_view()),
     path('updateUser/<int:pk>/', UpdateUserView.as_view()),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)

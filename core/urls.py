@@ -12,5 +12,3 @@ urlpatterns = [
     path('orders/<int:pk>/', OrderDetailView.as_view()),
     path('taskers/', TaskerListView.as_view()),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)

@@ -4,8 +4,8 @@ charset-normalizer==2.1.0
 cloudinary==1.29.0
 coreapi==2.3.3
 coreschema==0.0.4
-dj-database-url==1.0.0
-Django==4.1
+dj-database-url
+Django==3.2
 django-cloudinary-storage==0.3.0
 django-cors-headers==3.7.0
 django-environ==0.9.0
