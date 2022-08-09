@@ -1,0 +1,1 @@
+web: gunicorn izzi.wsgi --log-file -
