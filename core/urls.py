@@ -4,6 +4,7 @@ from core.views import *
 
 urlpatterns = [
     path('services/', ServiceListView.as_view()),
+    path('services/<int:pk>/', ServiceDetailView.as_view()),
     path('subServices/', SubServiceListView.as_view()),
     path('subServices/<int:pk>/', SubServiceDetailView.as_view()),
     path('comments/', CommentListView.as_view()),

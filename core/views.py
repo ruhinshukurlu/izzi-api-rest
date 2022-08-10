@@ -10,6 +10,12 @@ from core.serializers import *
 
 class ServiceListView(ListAPIView):
 
+    permission_classes = (AllowAny,)
+    queryset = Service.objects.all()
+    serializer_class = ServiceDetailSerializer
+
+class ServiceDetailView(RetrieveAPIView):
+
     queryset = Service.objects.filter(isActive = True)
     serializer_class = ServiceSerializer
 

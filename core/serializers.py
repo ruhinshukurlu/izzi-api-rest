@@ -14,6 +14,12 @@ class ServiceSerializer(serializers.ModelSerializer):
         model=Service
         fields = ['id', 'title', 'description', 'coverPhoto', 'icon', 'averagePrice' ,'subServices']
 
+class ServiceDetailSerializer(serializers.ModelSerializer):
+    subServices = SubServiceSerializer(many=True)
+    class Meta:
+        model=Service
+        fields = ['id', 'title', 'description', 'coverPhoto', 'icon', 'averagePrice' ,'subServices']
+
 class OptionSerializer(serializers.ModelSerializer):
     class Meta:
         model=ChoiceOption
