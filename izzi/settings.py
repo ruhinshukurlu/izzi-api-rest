@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 AUTH_USER_MODEL = 'authAPI.User'
@@ -40,11 +40,6 @@ import cloudinary.uploader
 import cloudinary.api
 from datetime import timedelta
 
-# cloudinary.config( 
-#   cloud_name = "dtokoknba", 
-#   api_key = "274196794155298", 
-#   api_secret = "Bpo5ryHFX17krl_B8-NsmFKh58M" 
-# )
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': env('CLOUD_NAME'),
