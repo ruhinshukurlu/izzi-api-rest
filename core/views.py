@@ -72,6 +72,11 @@ class TaskerListView(ListAPIView):
     serializer_class = TaskerListSerializer
 
 
+class BlogListView(ListAPIView):
+
+    queryset = Blog.objects.filter(isActive = True)
+    serializer_class = BlogListSerializer
+
 class SubServiceDetailView(RetrieveAPIView):
     # permission_classes = (AllowAny,)
     queryset = SubService.objects.all()
@@ -82,3 +87,7 @@ class OrderDetailView(RetrieveAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Order.objects.all()
     serializer_class = OrderDetailSerializer
+
+class BlogDetailView(RetrieveAPIView):
+    queryset = Blog.objects.all()
+    serializer_class = BlogDetailSerializer

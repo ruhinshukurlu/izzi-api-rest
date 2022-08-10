@@ -14,4 +14,6 @@ admin.site.register(ChoiceOption)
 admin.site.register(Order)
 admin.site.register(OrderPhoto)
 admin.site.register(TaskerSkill)
+admin.site.register(Blog)
+admin.site.register(SubBlog)
 

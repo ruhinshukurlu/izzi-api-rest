@@ -10,7 +10,7 @@ from rest_framework import serializers, status
 from  rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from .utils import jwt_decode_handler
 from django.contrib.auth import get_user_model, password_validation
-
+from rest_framework.viewsets import ModelViewSet
 
 User = get_user_model()
 
@@ -81,10 +81,21 @@ class UpdateUserView(generics.UpdateAPIView):
     permission_classes = (IsAuthenticated ,)
     serializer_class = UpdateUserSerializer    
 
-class UserDetailView(RetrieveAPIView):
-    permission_classes = (IsAuthenticated,)
-    # queryset = User.objects.all()
-    serializer_class = UserDetail
+# class UserDetailView(APIView):
+#     permission_classes = (IsAuthenticated,)
+#     # queryset = User.objects.all()
+#     serializer_class = UserDetail
 
-    def get_object(self):
-        return self.request.user
+#     def get(self, request):
+#         return Response({"user":self.request.user})
+
+
+class UserDetailView(ModelViewSet):
+    queryset = get_user_model().objects.all()
+    permission_classes = (IsAuthenticated, )
+    serializer_class = UserDetail
+    
+    def retrieve(self, request, *args, **kwargs):
+        user_profile = self.queryset.get(email=request.user.email)
+        serializer = self.get_serializer(user_profile)
+        return Response({'user': serializer.data})

@@ -256,5 +256,35 @@ class Comment(models.Model):
     def __str__(self):
         return self.author.first_name
 
-   
 
+class Blog(models.Model):
+
+    title = models.CharField("Title", max_length=50)
+    author = models.ForeignKey("authAPI.User", verbose_name="User", on_delete=models.CASCADE)
+    description = models.TextField("description")
+    subBlogs = models.ManyToManyField("core.SubBlog", verbose_name="Sub Blogs")
+    coverPhoto = models.ImageField("Cover Photo", upload_to='services-rest/')
+
+    # moderation
+    isActive = models.BooleanField("Is Active", default=True)
+    createdAt = models.DateTimeField("Created At", auto_now_add=True)
+    updatedAt = models.DateTimeField("Updated At", auto_now=True)
+    class Meta:
+        verbose_name = "Blog"
+        verbose_name_plural = "Blogs"
+
+    def __str__(self):
+        return self.title
+
+
+class SubBlog(models.Model):
+
+    title = models.CharField("Title", max_length=50)
+    text = models.TextField("Text")
+
+    class Meta:
+        verbose_name = "SubBlog"
+        verbose_name_plural = "SubBlogs"
+
+    def __str__(self):
+        return self.title

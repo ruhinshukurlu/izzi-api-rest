@@ -107,3 +107,22 @@ class OrderCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model=Order
         fields = ['id', 'customer', 'tasker', 'options', 'reference', 'subService', 'startDate', 'address', 'status', 'createdAt', 'detail', 'photos', 'totalAmount', 'discount']
+
+class SubBlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=SubBlog
+        fields = ['id', 'title', 'text']
+
+class BlogListSerializer(serializers.ModelSerializer): 
+    author = UserDetail()
+    class Meta:
+        model=Blog
+        fields = ['id', 'author', 'title', 'description', 'coverPhoto', 'createdAt']
+
+
+class BlogDetailSerializer(serializers.ModelSerializer): 
+    subBlogs = SubBlogSerializer(many=True)
+    author = UserDetail()
+    class Meta:
+        model=Blog
+        fields = ['id', 'author', 'title', 'description', 'coverPhoto', 'createdAt' ,'subBlogs']

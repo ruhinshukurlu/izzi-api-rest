@@ -9,5 +9,5 @@ urlpatterns = [
     path('changePassword/<int:pk>/', ChangePasswordView.as_view()),
     path('refreshToken/', RefreshTokenView.as_view()),
     path('updateUser/<int:pk>/', UpdateUserView.as_view()),
-    path('user/', UserDetailView.as_view()),
+    path('user/', UserDetailView.as_view({'get': 'retrieve'})),
 ]
