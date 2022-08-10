@@ -2,6 +2,7 @@ import re
 from django.shortcuts import render
 from .serializers import UserSerializer, UserDetail, ChangePasswordSerializer, UpdateUserSerializer
 from rest_framework.views import APIView
+from rest_framework.generics import  RetrieveAPIView
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -79,3 +80,11 @@ class UpdateUserView(generics.UpdateAPIView):
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated ,)
     serializer_class = UpdateUserSerializer    
+
+class UserDetailView(RetrieveAPIView):
+    permission_classes = (IsAuthenticated,)
+    # queryset = User.objects.all()
+    serializer_class = UserDetail
+
+    def get_object(self):
+        return self.request.user
