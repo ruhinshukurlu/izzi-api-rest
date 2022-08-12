@@ -55,13 +55,18 @@ class SkillSerializer(serializers.ModelSerializer):
         model=TaskerSkill
         fields = ['id', 'tasker', 'subService', 'option', 'priceType', 'price']
 
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=City
+        fields = ['id', 'name']
 
 class TaskerListSerializer(serializers.ModelSerializer):
     user = UserDetail()
     skills = SkillSerializer (many=True)
+    workCities = CitySerializer(many=True)
     class Meta:
         model=Tasker
-        fields = ['id', 'user', 'bio', 'rating', 'completedTaskCount', 'topTasker', 'supervisor', 'createdAt', 'coverPhoto', 'skills']
+        fields = ['id', 'user', 'bio', 'rating', 'completedTaskCount', 'topTasker', 'supervisor', 'createdAt', 'coverPhoto', 'skills', 'workCities']
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -72,10 +77,7 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ['id', 'author' , 'subService', 'text', 'rating', 'createdAt']
 
 
-class CitySerializer(serializers.ModelSerializer):
-    class Meta:
-        model=City
-        fields = ['id', 'name']
+
 
 
 class OrderListSerializer(serializers.ModelSerializer):
