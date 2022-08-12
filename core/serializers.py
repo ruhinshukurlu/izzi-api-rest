@@ -49,8 +49,7 @@ class SubServiceDetailSerializer(serializers.ModelSerializer):
 
 
 class SkillSerializer(serializers.ModelSerializer):
-    # subService = SubServiceSerializer()
-
+    subService = SubServiceSerializer()
     option = OptionSerializer()
     class Meta:
         model=TaskerSkill
